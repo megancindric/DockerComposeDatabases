@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+
+  mongo:
+    #Base image
+    image: mongo
+    #Set to restart always
+    restart: always
+    #Set environment variables
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    #Base image
+    image: mongo-express
+    #Set to restart always
+    restart: always
+    #Set environment variables
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+    #Map ports 8081 to 8053
+    ports:
+      - 8053:8081

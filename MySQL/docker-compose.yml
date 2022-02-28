@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+
+  db:
+    #Uses mysql image
+    image: mysql
+    #Specify command to use native password
+    command: --default-authentication-plugin=mysql_native_password
+    #Set to restart always
+    restart: always
+    #Specify environment variables
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+  adminer:
+    #Uses adminer image
+    image: adminer
+    #Set to restart always
+    restart: always
+    #Maps ports 8080 to 8085
+    ports:
+      - 8085:8080
